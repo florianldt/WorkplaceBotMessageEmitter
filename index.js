@@ -9,12 +9,16 @@ const renderEmote = (type) => {
     switch (type) {
         case 'error':
             emote = '❌';
+            break;
         case 'info':
             emote = 'ℹ️';
+            break;
         case 'success':
             emote = '✅';
+            break;
         case 'warning':
             emote = '⚠️';
+            break;
     }
     return emote;
 };
