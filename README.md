@@ -1,2 +1,3 @@
-# WorkplaceBotMessageEmitter
- Send bot message to your FacebookWorkplace thread
+# Workplace Bot Message Emitter (WBME)
+
+Send bot message to your Workplace thread
