@@ -1,3 +1,3 @@
 # Workplace Bot Message Emitter (WBME)
 
-Send bot message to your Workplace thread
+Send bot messages to your Workplace thread
