@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 
 const BASE_URL = 'https://graph.facebook.com/v6.0/me/messages?access_token=';
-const BOT_ACCESS_TOKEN = '';
-const WORPLACE_THREAD_KEY = '';
+let BOT_ACCESS_TOKEN = '';
+let WORPLACE_THREAD_KEY = '';
 
 const renderEmote = (type) => {
     let emote = '';
@@ -33,29 +33,36 @@ const renderText = (title, message) => {
     return text;
 };
 
+export const init = (botAccessToken, workplaceThreadId) => {
+    BOT_ACCESS_TOKEN = botAccessToken;
+    WORPLACE_THREAD_KEY = workplaceThreadId;
+};
+
 export const sendMessage = (type, title, message) => {
-    const emote = renderEmote(type);
-    const text = renderText(title, message);
-    const payload = {
-        recipient: {
-            thread_key: WORPLACE_THREAD_KEY,
-        },
-        message: {
-            text: emote + text,
-        },
-    };
+    return new Promise(function(resolve, reject) {
+        if (!BOT_ACCESS_TOKEN && !WORPLACE_THREAD_KEY) {
+            reject(Error('Workplace Bot Message Emitter not initialized'));
+        }
 
-    const config = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-    };
+        const emote = renderEmote(type);
+        const text = renderText(title, message);
+        const payload = {
+            recipient: {
+                thread_key: WORPLACE_THREAD_KEY,
+            },
+            message: {
+                text: emote + text,
+            },
+        };
 
-    fetch(BASE_URL + BOT_ACCESS_TOKEN, config)
-        .then((data) => {
-            console.log('✅', data);
-        })
-        .catch((e) => console.error(e));
+        const config = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        };
+
+        resolve(fetch(BASE_URL + BOT_ACCESS_TOKEN, config));
+    });
 };
