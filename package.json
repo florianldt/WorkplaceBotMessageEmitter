@@ -1,5 +1,5 @@
 {
-    "name": "workplace-bot-message-emitor",
+    "name": "workplace-bot-message-emitter",
     "version": "1.0.0",
     "type": "module",
     "description": "Send bot messages to your Workplace thread",
