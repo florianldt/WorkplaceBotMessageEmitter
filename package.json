@@ -1,14 +1,20 @@
 {
-    "name": "wbme",
+    "name": "workplace-bot-message-emitor",
     "version": "1.0.0",
-    "description": "Send bot message to your Workplace thread",
+    "type": "module",
+    "description": "Send bot messages to your Workplace thread",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Florian Ludot",
-    "type": "module",
+    "author": "@florianldt",
+    "keywords": ["facebook", "workplace", "bot", "message"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/florianldt/WorkplaceBotMessageEmitter.git"
+    },
     "license": "ISC",
+    "homepage": "https://github.com/florianldt/WorkplaceBotMessageEmitter",
     "dependencies": {
         "node-fetch": "^2.6.1"
     }
